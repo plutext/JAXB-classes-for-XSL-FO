@@ -26,10 +26,7 @@
 	</licenses>
 	<!-- <prerequisites /> -->
 	<scm>
-		<connection>scm:git@github.com:plutext/JAXB-classes-for-XSL-FO.git</connection>
-		<developerConnection>scm:git@github.com:plutext/JAXB-classes-for-XSL-FO.git</developerConnection>
-		<tag>HEAD</tag>
-		<url>https://plutext@github.com/plutext/JAXB-classes-for-XSL-FO.git</url>
+	    <developerConnection>scm:git|git@github.com:plutext/JAXB-classes-for-XSL-FO.git</developerConnection>
 	</scm>
 	<inceptionYear>2012</inceptionYear>
 	<developers>
@@ -105,13 +102,9 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- maven-javadoc-plugin seems to require large -Xmx so comment this 
-				out if your build is failing because you don't have enough. -->
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
-					<!-- 18 MB without the exclusion; still 15MB with -->
-					<!-- <excludePackageNames>org.plutext.jaxb.svg11:org.plutext.jaxb.xslfo</excludePackageNames> -->
 				</configuration>
 				<executions>
 					<execution>
