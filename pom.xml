@@ -7,12 +7,12 @@
 		<version>7</version>
 	</parent>
 
-	<groupId>org.plutext.jaxb</groupId>
-	<artifactId>xslfo</artifactId>
+	<groupId>org.plutext</groupId>
+	<artifactId>jaxb-xslfo</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>xsl-fo</name>
+	<name>jaxb-xsl-fo</name>
 	<description>JAXB classes modelling XSL FO</description>
 	<url>https://github.com/plutext/JAXB-classes-for-XSL-FO</url>
 	<licenses>
