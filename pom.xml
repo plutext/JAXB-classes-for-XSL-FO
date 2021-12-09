@@ -9,7 +9,7 @@
 
 	<groupId>org.plutext</groupId>
 	<artifactId>jaxb-xslfo</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>11.4.0</version>
 	<packaging>jar</packaging>
 
 	<name>jaxb-xsl-fo</name>
@@ -42,35 +42,18 @@
 	</developers>
 
 	<build>
+	
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<!--<testSourceDirectory>src/test/java</testSourceDirectory> -->
 		<outputDirectory>bin</outputDirectory>
-		<testOutputDirectory>bin</testOutputDirectory>
+		<testOutputDirectory>bin-testOutput</testOutputDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.8.1</version>
 				<configuration>
-					<!-- The objective is to generate a jar which is compatible with Java 
-						1.5, whilst at the same time allowing @Override annotations in the source 
-						code on methods which merely implement an interface (Java 6 allows this, 
-						but 1.5 gives an error). When I played around with this, I found that both 
-						maven and ant would happily compile to target 1.5 with the pesky @Override 
-						annotations present (irrespective of whether source was set to 1.5 or 1.6). 
-						You are not allowed source=1.6, target=1.5; this results in: Failure executing 
-						javac, but could not parse the error javac: source release 1.6 requires target 
-						release 1.6 So we need source=1.5, target=1.5 The downside is that m2eclipse 
-						mirrors this in Eclipse's compiler settings, and Eclipse then complains about 
-						the @Override annotations :-( So you must manually change the Eclipse compiler 
-						setting back to 1.6. -->
-					<source>1.5</source>
-					<target>1.5</target>
-
-					<verbose>false</verbose>
-					<!-- maxmemory>512m</maxmemory On Linux, use: MAVEN_OPTS="-Xmx512m" mvn install -->
-					<!-- try to help maven to find package com.sun.xml.internal.bind.marshaller: 
-						<bootclasspath>${java.home}/lib/rt.jar</bootclasspath> but this doesn't help -->
+					<release>11</release>				
 				</configuration>
 			</plugin>
 			<plugin>
@@ -89,7 +72,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>2.1.2</version>				
+				<version>3.0.1</version>				
 				<executions>
 					<execution>
 						<goals>
@@ -100,7 +83,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.8</version>				
+				<version>3.1.0</version>				
 				<configuration>
 				</configuration>
 				<executions>
@@ -119,7 +102,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.8</version>				
+				<version>3.1.0</version>				
 				<reportSets>
 					<reportSet>
 						<id>standard-javadoc</id>
@@ -147,6 +130,31 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	
+	<dependencies>
+
+		<!--  docx4j v11.4.0 and later use JAXB 3.0 -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.8.0-beta4</version> <!-- was beta 2 -->
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>	
+	
 
 	<profiles> <!--  use -P eg mvn -Psign-artifacts  -->
 		<profile>
